@@ -1,0 +1,61 @@
+
+<section>
+
+    <h1>Bon de commande</h1>
+
+    <a href="/">Back to home</a>
+
+    <article class="order-form-customer">
+        <h2><%= customer.customerName %></h2>
+        <h3><%= customer.contactFirstName %> <%= customer.contactLastName %></h3>
+        <p><%= customer.addressLine1 %></p>
+        <p><%= customer.addressLine2 %></p>
+        <p><%= customer.city %></p>
+    </article>
+
+    <hr>
+
+    <table class="standard-table">
+
+        <caption>Bon de commande n°<%= orderNumber %></caption>
+
+        
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th class="money-column">Each price</th>
+                <th>Quantity</th>
+                <th class="money-column">Total price</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th colspan="3">Total amount HT</th>
+                <th><%= totalAmount.toFixed(2) %></th>
+            </tr>
+            <tr>
+                <th colspan="3">TVA 20%</th>
+                <th><%= (totalAmount *0.20).toFixed(2) %></th>
+            </tr>
+            <tr>
+                <th colspan="3">Total Amount TTC</th>
+                <th><%= (totalAmount *1.20).toFixed(2) %></th>
+            </tr>
+        </tfoot>
+
+        <tbody>
+            <% orderDetail.forEach(product => { %>
+                <tr>
+                    <td><%= product.productName %></td>               
+                    <td class="money-column"><%= product.priceEach.toFixed(2) %></td>               
+                    <td><%= product.quantityOrdered %></td>             
+                    <td class="money-column"><%= product.totalPrice.toFixed(2) %></td>
+                </tr>
+                <% }); %>
+
+        </tbody>
+
+
+    </table>
+
+</section>

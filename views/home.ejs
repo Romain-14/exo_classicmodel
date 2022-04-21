@@ -1,0 +1,27 @@
+<h1>Bon de commande</h1>
+
+<table>
+    <caption>Liste des commandes</caption>
+
+    <thead>
+        <tr>
+            <th>Commande</th>
+            <th>Date de la commande</th>
+            <th>Date de livraison</th>
+            <th>Statut</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach(order => { %>
+            <tr>
+                <td>
+                    <a href="/detail/<%= order.orderNumber %>"><%= order.orderNumber %></a>
+                </td>
+                <td><%= order.orderDate.toLocaleDateString() %></td>
+                <td><%= order.shippedDate %></td>
+                <td><%= order.status %></td>
+            </tr>
+        <% }); %>
+
+    </tbody>
+</table>
